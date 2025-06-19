@@ -8,7 +8,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import mean_absolute_error, r2_score
 import joblib
 
-data = pd.read_csv("Housing.csv")  # Make sure your dataset is named 'train.csv'
+data = pd.read_csv("Housing.csv")  
 
 X = data.drop("price", axis=1)
 y = data["price"]
