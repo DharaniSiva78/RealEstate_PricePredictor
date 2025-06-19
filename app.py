@@ -4,7 +4,7 @@ import joblib
 
 model = joblib.load("enhanced_model.pkl")
 
-st.set_page_config(page_title="🏡 Real Estate Price Predictor", layout="centered")
+st.set_page_config(page_title="Real Estate Price Predictor", layout="centered")
 
 st.markdown("""
     <style>
@@ -13,14 +13,12 @@ st.markdown("""
         color: white;
     }
 
-    /* Make labels and input text white */
     label, .stTextInput label, .stNumberInput label,
     .stSelectbox label, .stSlider label,
     .css-1d391kg, .css-1v0mbdj, .css-ffhzg2 {
         color: white !important;
     }
 
-    /* Style input boxes and dropdowns */
     .stTextInput > div > div > input,
     .stNumberInput > div > input,
     .stSelectbox > div > div,
@@ -30,13 +28,11 @@ st.markdown("""
         border-color: #333333;
     }
 
-    /* Dropdown options */
     .css-1wa3eu0-option {
         color: white !important;
         background-color: #1a1a1a !important;
     }
 
-    /* Button styling */
     .stButton>button {
         color: white !important;
         background-color: #333333;
@@ -52,10 +48,9 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🏡 Real Estate Price Predictor")
+st.title("Real Estate Price Predictor")
 st.markdown("Fill in the house details below to estimate the market price in India.")
 
-# 📝 Input form
 with st.form("prediction_form"):
     area = st.number_input("Total Area (sq ft)", min_value=300, max_value=20000, value=1000)
     bedrooms = st.slider("Number of Bedrooms", 1, 10, 3)
@@ -73,7 +68,6 @@ with st.form("prediction_form"):
 
     submitted = st.form_submit_button("Predict Price")
 
-# 📈 Prediction
     if submitted:
         input_data = pd.DataFrame([{
             'area': area,
@@ -91,4 +85,4 @@ with st.form("prediction_form"):
         }])
 
         prediction = model.predict(input_data)[0]
-        st.success(f"💰 Estimated House Price: ₹ {int(prediction):,}")
+        st.success(f" Estimated House Price: ₹ {int(prediction):,}")
