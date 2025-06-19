@@ -2,13 +2,10 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# Load trained model
 model = joblib.load("enhanced_model.pkl")
 
-# Streamlit page setup
 st.set_page_config(page_title="🏡 Real Estate Price Predictor", layout="centered")
 
-# 🌙 Inject custom CSS for black background and white text
 st.markdown("""
     <style>
     .stApp, body {
@@ -55,7 +52,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Title
 st.title("🏡 Real Estate Price Predictor")
 st.markdown("Fill in the house details below to estimate the market price in India.")
 
