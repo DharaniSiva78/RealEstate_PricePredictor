@@ -2,9 +2,11 @@ import streamlit as st
 import pandas as pd
 import joblib
 
+
 model = joblib.load("enhanced_model.pkl")
 
 st.set_page_config(page_title="Real Estate Price Predictor", layout="centered")
+
 
 st.markdown("""
     <style>
@@ -13,12 +15,14 @@ st.markdown("""
         color: white;
     }
 
+    
     label, .stTextInput label, .stNumberInput label,
     .stSelectbox label, .stSlider label,
     .css-1d391kg, .css-1v0mbdj, .css-ffhzg2 {
         color: white !important;
     }
 
+    
     .stTextInput > div > div > input,
     .stNumberInput > div > input,
     .stSelectbox > div > div,
@@ -28,11 +32,13 @@ st.markdown("""
         border-color: #333333;
     }
 
+    
     .css-1wa3eu0-option {
         color: white !important;
         background-color: #1a1a1a !important;
     }
 
+    
     .stButton>button {
         color: white !important;
         background-color: #333333;
@@ -48,8 +54,10 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+
 st.title("Real Estate Price Predictor")
 st.markdown("Fill in the house details below to estimate the market price in India.")
+
 
 with st.form("prediction_form"):
     area = st.number_input("Total Area (sq ft)", min_value=300, max_value=20000, value=1000)
@@ -85,4 +93,4 @@ with st.form("prediction_form"):
         }])
 
         prediction = model.predict(input_data)[0]
-        st.success(f" Estimated House Price: ₹ {int(prediction):,}")
+        st.success(f"Estimated House Price: ₹ {int(prediction):,}")
